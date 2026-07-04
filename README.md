@@ -9,9 +9,13 @@ L:\
 ```
    
 If you want to compile any of my projects without reconfiguring the Visual Studio settings, you can map a local folder to a virtual L: drive using the Windows SUBST command.
+
 Create a directory on your local drive, for example, C:\DEV.
+
 Download the Include repository inside that directory to create C:\DEV\Include.
+
 Open the Windows Command Prompt (cmd) and run the following command:
+
 `SUBST L: C:\DEV`
 
 Luca P.
