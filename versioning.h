@@ -67,7 +67,7 @@ Vantaggi:
 	salva spazio in struct, registry, resource
 
 Svantaggi:
-	massimo 255 per ogni componente (8 bit) – sufficiente per la maggior parte dei progetti consumer
+	massimo 255 per ogni componente (8 bit), ma sufficiente per la maggior parte dei progetti
 */
 #ifndef _VERSIONING_H
 #define _VERSIONING_H 1

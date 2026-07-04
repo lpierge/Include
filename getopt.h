@@ -7,15 +7,19 @@
 #ifndef _GETOPT_H
 #define _GETOPT_H 1
 
+#include <stdbool.h>
+#include "typeval.h"
+
 /* interfaccia C++ */
 #ifdef __cplusplus
   extern "C" {
 #endif
 
-#include <stdbool.h>
-#include "typeval.h"
-
 #define MAX_CMDLINE 4096 // in teoria 8192 via CMD.EXE in Windows (moderno)
+
+char* GetSafeCommandLine(char* pCmdLine);
+
+char* GetCommandLineAsString(int argc,char* argv[],char* szBuffer,size_t nBuffer);
 
 /*
 	GETOPT

@@ -12,11 +12,9 @@
   extern "C" {
 #endif
 
-#include <stddef.h>
-
-long long		unixTimeStamp		(void);
-int				unixTimeStampToDate	(unsigned long ulValue,char *buffer,size_t size);
-unsigned long	dateToUnixTimeStamp	(char *date);
+long long		unix_timestamp			(void);
+int				unix_timestamp_to_date	(unsigned long ulValue,char *buffer,size_t size);
+unsigned long	date_to_unix_timestamp	(char *date);
 
 /* interfaccia C++ */
 #ifdef __cplusplus

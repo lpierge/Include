@@ -21,17 +21,17 @@
 		First editing: unknown, but before 04/02/1997
 		Last Change  : 11/10/1998"
 
-	e aggiunto il codice per gestire piu' pattern in un unica stringa (separati da spazio). Aggiunto anche 
-	il codice per cercare sottostringhe esatte, dato che l'originale di Schintke non e' progettato per cercare 
-	come farebbe una funzione di ricerca stringa standard, tipo strstr().
+	ed aggiunto il codice per gestire piu' pattern in un unica stringa (separati da spazio). Aggiunto anche il 
+	codice per cercare sottostringhe esatte, dato che l'originale di Schintke non e' progettato per cercare come
+	farebbe una funzione di ricerca stringa standard, tipo strstr().
 	Vedi le note in Match().
 
-	Il membro SplitPattern() separa e serializzare in una lista di tipo CItemList i pattern passati come una 
-	unica stringa e separati dal carattere ';'. 
+	Il membro SplitPattern() separa e serializzare in una lista di tipo CItemList i pattern passati come una unica
+	stringa e separati dal carattere ';'. 
 	Il chiamante dovra' poi agganciare la lista tramite il membro GetItemList() e scorrerla chiamando Match() e/o 
 	MatchSubString() su ogni elemento, per verificare se la stringa fa match con lo skeleton/pattern della lista.
-	Al contrario, con il meccanismo originario della classe, la SetIgnoreSpaces(), che permette di considerare 
-	gli spazi nella stringa per le wildcards come un separatore, si genera una lista interna di pattern che viene 
+	Al contrario, con il meccanismo originario della classe, la SetIgnoreSpaces(), che permette di considerare gli
+	spazi nella stringa per le wildcards come un separatore, si genera una lista interna di pattern che viene 
 	verificata internamente.
 	
 	Note:
@@ -149,7 +149,6 @@ public:
 	inline void		SetIgnoreSpaces	(BOOL bFlag) {m_bIgnoreSpaces = bFlag;}
 	inline BOOL		GetIgnoreSpaces	(void) const {return(m_bIgnoreSpaces);}
 
-	// forma aggiuntiva per considerare piu pattern in una stringa, separati da ;
 	// forma aggiuntiva per considerare piu pattern in una stringa, separati da ;
 	CItemList*		SplitPattern	(const char* patternStr);
 	CItemList*		GetItemList		(void) {return(m_pInternalItemList);}

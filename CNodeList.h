@@ -158,7 +158,16 @@ class CNode
 	friend CNodeList;
 
 public:
-	CNode() {}
+	CNode()
+	{
+#ifdef _DEBUG
+		memset(signature,'\0',sizeof(signature));
+#endif
+		index = 0;
+		status = 0;
+		next = NULL;
+		data = NULL;
+	}
 	virtual ~CNode() {}
 
 private:

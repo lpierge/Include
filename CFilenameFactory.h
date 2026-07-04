@@ -10,8 +10,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "window.h"
+#include <wchar.h>
 
 #define ABBREVIATE_DEFAULT_STRING	"[...]"
+#define ABBREVIATE_DEFAULT_STRINGW	L"[...]"
 #define ABBREVIATE_MAX_FNAME		64L
 
 /*
@@ -20,16 +22,26 @@
 class CFilenameFactory
 {
 public:
-	CFilenameFactory()			{memset(m_szFileName,'\0',sizeof(m_szFileName));}
+	CFilenameFactory()			{memset(m_szFileName,'\0',sizeof(m_szFileName));memset(m_szFileNameW,'\0',sizeof(m_szFileNameW));}
 	virtual ~CFilenameFactory()	{}
 
+	// versione ANSI e Wide (Unicode)
+
 	LPCSTR	Abbreviate			(LPCSTR	lpcszFilename,						// nome file (con eventuale pathname)
-								int		nMaxLength = ABBREVIATE_MAX_FNAME,	// massima lunghezza (oltre la quale tronca), se <= 0 elimina solo il pathname
-								BOOL	bSaveExt = FALSE,					// per includere o meno l'estensione del file
-								BOOL	bStripPath = TRUE,					// per eliminare o meno il pathname dal nome file di output
-								LPCSTR	pDefaultString = NULL,				// se non specificato diversamente assume <ABBREVIATE_DEFAULT_STRING>
-								LPSTR	pFilename = NULL,					// buffer di output
-								UINT	nFilenameSize = 0					// dim. buf. output
+								int		nMaxLength		= ABBREVIATE_MAX_FNAME,	// massima lunghezza (oltre la quale tronca), se <= 0 elimina solo il pathname
+								BOOL	bSaveExt		= FALSE,			// per includere o meno l'estensione del file
+								BOOL	bStripPath		= TRUE,				// per eliminare o meno il pathname dal nome file di output
+								LPCSTR	pDefaultString	= NULL,				// se non specificato diversamente assume <ABBREVIATE_DEFAULT_STRING>
+								LPSTR	pFilename		= NULL,				// buffer di output
+								UINT	nFilenameSize	= 0					// dim. buf. output
+								);
+	LPCWSTR	AbbreviateW			(LPCWSTR lpcwszFilename,
+								int		nMaxLength		= ABBREVIATE_MAX_FNAME,
+								BOOL	bSaveExt		= FALSE,
+								BOOL	bStripPath		= TRUE,
+								LPCWSTR	pDefaultString	= NULL,
+								LPWSTR	pFilename		= NULL,
+								UINT	nFilenameSize	= 0
 								);
 
 	LPCSTR	GetNext				(LPCSTR	lpcszFilename,						// (solo) nome file, senza pathname
@@ -55,6 +67,7 @@ private:
 								);
 
 	char	m_szFileName[_MAX_FILEPATH+1];
+	wchar_t	m_szFileNameW[_MAX_FILEPATH+1];
 };
 
 #endif // _CFILENAMEFACTORY_H

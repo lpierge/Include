@@ -9,17 +9,18 @@
 #ifndef _WIN32API_H
 #define _WIN32API_H 1
 
-/* interfaccia C++ */
-#ifdef __cplusplus
-  extern "C" {
-#endif
-
 #include "window.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <wchar.h>
 #include <wctype.h>
 #include <winreg.h>
+
+/* interfaccia C++ */
+#ifdef __cplusplus
+  extern "C" {
+#endif
 
 /*
   macro   |   header    |     uso
@@ -146,14 +147,14 @@ BOOL			GetDiskInfo				(LPCSTR lpcszRootPath,DISKINFO* pDiskInfo);
 LPCSTR			GetDiskType				(DWORD dwType); /* <- DISKINFO.driveType */
 
 /*
-	FILETYPEPROBABILITY
+	FILETYPEPROB
 */
 typedef struct _filetypeprobability {
     int text;
     int binary;
-} FILETYPEPROBABILITY;
+} FILETYPEPROB;
 
-FILETYPEPROBABILITY GetFileTypeProbability(LPCSTR lpcszFilename);
+FILETYPEPROB	GetFileTypeProbability	(LPCSTR lpcszFilename);
 
 UINT			GetDriveFromPath		(LPCSTR lpcszPathName,LPSTR lpszDrive,UINT nSize);
 
@@ -214,7 +215,7 @@ LPCSTR			SplitFileName			(LPCSTR lpcszFilename,LPSTR lpszPath,LPSTR pszName,LPST
 LPSTR			EnsureBackslash			(LPSTR lpszFileName,UINT nSize);
 LPSTR			RemoveBackslash			(LPSTR lpszFileName);
 
-BOOL			EnsurePathname			(LPCSTR lpcszPathname,LPDWORD pdwError);
+BOOL			EnsurePathnameExists	(LPCSTR lpcszPathname,LPDWORD pdwError);
 BOOL			CreatePathname			(LPCSTR lpcszPathname,LPDWORD pdwError);
 
 LPCSTR			EnsureValidFileName		(LPCSTR lpcszFileName,LPSTR lpszNewName,UINT cbNewName);
@@ -276,8 +277,10 @@ BOOL			GetTaskBarPos			(TASKBARPOS* tbi);
 
 void			SetForegroundWindowEx	(HWND hWnd,BOOL bInvalidate);
 
-wchar_t*		AnsiToWideChar			(LPCSTR pszAnsi);
-LPSTR			WideCharToAnsi			(const wchar_t* pwszWide);
+wchar_t*		AnsiToWideChar			(LPCSTR pszAnsi,UINT codePage);
+LPSTR			WideCharToAnsi			(const wchar_t* pwszWide,UINT codePage);
+int				wcscount				(LPCWSTR szString,LPCWSTR szChar);
+wchar_t*		wcsistr					(const wchar_t *haystack,const wchar_t *needle);
 
 /*
 	ANSWER
@@ -289,6 +292,9 @@ typedef enum _answer {
 
 /* <conio.h>, getch() */
 UINT			GetLineFromStdin		(LPSTR lpszBuffer,UINT nSize);
+
+void			ResetConsoleBuffer		(void);
+void			InitConsoleGeometry		(short nWidth,short nHeight);
 ANSWER			ConsolePromptYesOrNo	(void);
 void			ConsolePromptEnter		(void);
 void			ClearConsoleScreen		(void);

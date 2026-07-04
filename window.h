@@ -342,12 +342,12 @@
 
 /*
 	OCCHIO:
-	la NON inclusione della macro WIN32_LEAN_AND_MEAN fa si che si generino warnings ed errori 
-	per colpa del disegno erratico delle librerie e dei files include di Microsoft, soprattutto 
-	quando si tratta di Winsock
-	definirla qui o nel progetto
-	per problemi specifici con winsock2, provare a definire (sempre a livello di progetto) anche 
-	le macro _WINSOCKAPI_ e _WINSOCK_DEFS
+	la NON definizione della macro WIN32_LEAN_AND_MEAN fa si che si generino warnings ed errori per colpa del 
+	disegno erratico (AC/DC) delle librerie e dei files include di Microsoft, soprattutto quando si tratta di 
+	Winsock
+	definire la macro WIN32_LEAN_AND_MEAN qui o nel progetto
+	per problemi specifici con winsock2, provare a definire (sempre a livello di progetto) anche le macro 
+	_WINSOCKAPI_ e _WINSOCK_DEFS
 */
 /* per i problemi di compilazione quando si sceglie winsock2 */
 #ifndef WIN32_LEAN_AND_MEAN

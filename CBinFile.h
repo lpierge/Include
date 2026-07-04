@@ -63,7 +63,7 @@ public:
 
 	inline	BOOL	IsOpen					(void) {return(m_hHandle!=INVALID_HANDLE_VALUE);}
 	virtual	BOOL	Open					(LPCSTR lpcszFileName,BOOL bCreateIfNotExist = TRUE,DWORD dwAccessMode = GENERIC_READ|GENERIC_WRITE,DWORD dwShareMode = FILE_SHARE);
-	virtual	BOOL	OpenMode				(LPCSTR lpcszFileName,DWORD dwMode = OPEN_EXISTING,DWORD dwAccessMode = GENERIC_READ|GENERIC_WRITE,DWORD dwShareMode = FILE_SHARE);
+	virtual	BOOL	OpenEx					(LPCSTR lpcszFileName,DWORD dwMode = OPEN_EXISTING,DWORD dwAccessMode = GENERIC_READ|GENERIC_WRITE,DWORD dwShareMode = FILE_SHARE);
 
 	inline	BOOL	OpenExistingReadOnly	(LPCSTR lpcszFileName) {return(Open(lpcszFileName,FALSE,GENERIC_READ));}
 	inline	BOOL	OpenExistingReadWrite	(LPCSTR lpcszFileName) {return(Open(lpcszFileName,FALSE,GENERIC_READ|GENERIC_WRITE));}

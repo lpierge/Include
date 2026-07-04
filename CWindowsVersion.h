@@ -9,7 +9,7 @@
 
 #include "window.h"
 #include "win32api.h"
-//#include "CWindowsXPTheme.h"
+#include "CWindowsXPTheme.h"
 
 /*
 	CWindowsVersion
@@ -31,6 +31,8 @@ public:
 	inline BOOL				IsRunningOnNT		(void) const {return(m_bIsRunningOnNT);}
 	inline BOOL				IsRunningOnXP		(void) const {return(m_bIsRunningOnCartoons && m_bIsRunningOnNT);}
 
+	const CWindowsXPTheme*	GetWindowsXPTheme	(void);
+
 	inline DWORD			GetCommonControlsVer(void) {return(m_dwCommonControlsDllVersion);}
 
 private:
@@ -44,7 +46,7 @@ private:
 	static BOOL				m_bIsRunningOnCartoons;
 	static BOOL				m_bIsRunningOnNT;
 	static DWORD			m_dwCommonControlsDllVersion;
-//	CWindowsXPTheme*		m_pXPTheme;
+	CWindowsXPTheme*		m_pXPTheme;
 };
 
 #endif // _CWINDOWSVERSION
