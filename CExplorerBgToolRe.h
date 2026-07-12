@@ -26,12 +26,17 @@ public:
 	CExplorerBgToolRe();
 	~CExplorerBgToolRe();
 
+	HRESULT	GetVersion			(const wchar_t* pcwzDllPath,int& major,int& minor,int& patch);
+
 	HRESULT	Register			(const wchar_t* pcwzDllPath);
 	HRESULT	Unregister			(const wchar_t* pcwzDllPath);
 	HRESULT	Unregister			(void);
+
 	TERN	IsRegistered		(const wchar_t* pcwzDllPath);
-	BOOL	IsRegistered		(wchar_t* pwzDllPath,size_t nSize);
+	TERN	IsRegistered		(wchar_t* pwzDllPath,size_t nSize);
+
 	BOOL	IsAdmin				(void);
+
 	BOOL	RestartExplorer		(void);
 
 private:

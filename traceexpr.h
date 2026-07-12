@@ -38,38 +38,33 @@
 	Al contrario, la sezione critica gira in User-Mode, ed e' rientrante, ossia permette un lock ricorsivo da
 	parte dello stesso thread.
 	Quindi il chiamante DEVE usare le due macro TRACE_INIT e TRACE_TERM, dato che si occupano della gestione
-	della sezione critica.
+	della sezione critica (anche se poi il codice si assicura di funzionare correttamente anche se le chiamate
+	non avvengono...).
 */
 #ifndef _TRACE_H
 #define _TRACE_H 1
 
+#include "macro.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <tchar.h> /* TCHAR, _T(), etc. */
-#include "macro.h"
 
 /* interfaccia C++ */
 #ifdef __cplusplus
   extern "C" {
 #endif
 
-// per concatenare L con l'argomento x
-#define _L_(x) L ## x
-
-// wrapper: prima espande il suo argomento (es. __FILE__) e poi lo passa a _L_
-#define _L(x) _L_(x)
-
 #define	TRACE_LOG_FILE			_T("trace.log")		/* nome del file di log */
 #define	TRACECALL_LOG_FILE		_T("tracecall.log")	/* nome del file di log per le chiamate di funzione */
 #define	TRACE_BUF				8192				/* dimensione del buffer per l'output */
 
 /* flag bitmask, dove ogni valore e' una potenza di due */
-#define	_TRFLAG_NOTRACE			0x00000001		/* nessun output */
-#define	_TRFLAG_TRACEFILE		0x00000002		/* output su file */
-#define	_TRFLAG_TRACECONSOLE	0x00000004		/* output nella finestra */
-#define	_TRFLAG_TRACEOUTPUT		0x00000008		/* output nella finestra del debugger */
-#define	_TRFLAG_TRACEBREAKPOINT 0x00000010		/* breakpoint nel debugger */
+#define	_TRFLAG_NOTRACE			0x00000001			/* nessun output */
+#define	_TRFLAG_TRACEFILE		0x00000002			/* output su file */
+#define	_TRFLAG_TRACECONSOLE	0x00000004			/* output nella finestra */
+#define	_TRFLAG_TRACEOUTPUT		0x00000008			/* output nella finestra del debugger */
+#define	_TRFLAG_TRACEBREAKPOINT 0x00000010			/* breakpoint nel debugger */
 
 #define __NOFILE__ ((const TCHAR*)NULL)
 #define __NOLINE__ (0)

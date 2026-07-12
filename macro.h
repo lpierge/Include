@@ -23,21 +23,25 @@
 */
 #define IS_EVEN(n) (!((n) & 0x01))
 
+/*
+	IS_SPACE()
+	se il carattere e' uno spazio
+*/
 static inline int _IS_SPACE(char c) {return(c==' ' || c=='\t' || c=='\r' || c=='\n' || c=='\v' || c=='\f');}
-
 #define IS_SPACE(c) _IS_SPACE(c)
+
 /*
 	ARRAY_SIZE
 	dimensione dell'array
 */
-#define ARRAY_SIZE(a)		(sizeof(a)/sizeof(a[0]))
+#define ARRAY_SIZE(a) (sizeof(a)/sizeof(a[0]))
 
 /*
 	ARRAY_[...]_SIZE
 	per array a 2 dimensioni, come: char args[128][16];
 */
-#define ARRAY_ROWS_SIZE(a)	(sizeof(a) / sizeof(a[0]))          // 128
-#define ARRAY_COLS_SIZE(a)	(sizeof(a[0]) / sizeof(a[0][0]))    // 16
+#define ARRAY_ROWS_SIZE(a) (sizeof(a) / sizeof(a[0]))          // 128
+#define ARRAY_COLS_SIZE(a) (sizeof(a[0]) / sizeof(a[0][0]))    // 16
 
 /*
 	IIF()
@@ -109,5 +113,15 @@ static inline int _IS_SPACE(char c) {return(c==' ' || c=='\t' || c=='\r' || c=='
   #define PRAGMAMESSAGE(s)
   #define PRAGMA_MESSAGE(s)
 #endif
+
+/*
+	_L()
+	come _T() pero' per valori Wide	
+*/
+// per concatenare L con l'argomento x
+#define _L_(x) L ## x
+
+// wrapper: prima espande il suo argomento (es. __FILE__) e poi lo passa a _L_
+#define _L(x) _L_(x)
 
 #endif /* _MACRO_H */
