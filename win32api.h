@@ -251,7 +251,7 @@ BOOL			GregorianDateTimeToFile	(GREGORIANDATETIME* pGregorianDateTime);
 
 int				CompareFileDateTime		(WORD wFileAdate,WORD wFileAtime,WORD wFileBdate,WORD wFileBtime);
 
-BOOL			CompareFilebyDate		(LPCSTR lpcszFileSrc,FILETIME* targetFileTime);
+int				CompareFilebyDate		(LPCSTR lpcszFileSrc,FILETIME* targetFileTime);
 BOOL			CompareFileTimebyName	(LPCSTR lpcszFileSrc,LPCSTR lpcszFileDst);
 
 long			GetFileDateSysDateDiff	(FILETIME* pftFileTime);
@@ -294,7 +294,7 @@ typedef enum _answer {
 UINT			GetLineFromStdin		(LPSTR lpszBuffer,UINT nSize);
 
 void			ResetConsoleBuffer		(void);
-void			InitConsoleGeometry		(short nWidth,short nHeight);
+DWORD			InitConsoleGeometry		(UINT nWidth,UINT nHeight);
 ANSWER			ConsolePromptYesOrNo	(void);
 void			ConsolePromptEnter		(void);
 void			ClearConsoleScreen		(void);
