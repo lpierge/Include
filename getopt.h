@@ -3,6 +3,8 @@
 	Gestione opzioni/parametri ricevuti da linea di comando.
 	Luca Piergentili, 31/08/98
 	lpiergentili@yahoo.com
+
+	Vedi le note in getopt.c.
 */
 #ifndef _GETOPT_H
 #define _GETOPT_H 1
@@ -15,15 +17,14 @@
   extern "C" {
 #endif
 
-#define MAX_CMDLINE 4096 // in teoria 8192 via CMD.EXE in Windows (moderno)
+#define MAX_CMDLINE 4096 // in teoria 8192 via cmd.exe in Windows (moderno)
 
-char* GetSafeCommandLine(char* pCmdLine);
-
-char* GetCommandLineAsString(int argc,char* argv[],char* szBuffer,size_t nBuffer);
+char*	GetSafeCommandLine		(char* pCmdLine);
+char*	GetCommandLineAsString	(int argc,char* argv[],char* szBuffer,size_t nBuffer);
+void	BuildCustomArgs			(const char* cmd,int* custom_argc,char*** custom_argv);
 
 /*
 	GETOPT
-
 	struttura per specificare/ricevere i dati dell'opzione
 */
 typedef struct _getopt {

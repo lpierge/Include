@@ -104,7 +104,7 @@ UINT			MessageBoxResourceEx	(HWND hWnd,UINT nStyle,LPCSTR lpcszTitle,UINT nID,..
 UINT			FormatResourceString	(LPSTR lpszString,UINT nSize,UINT nID);
 UINT			FormatResourceStringEx	(LPSTR lpszString,UINT nSize,UINT nID,...);
 
-BOOL			ExtractResource			(UINT resource,LPCSTR lpcszResName,LPCSTR lpszFileName);
+BOOL			ExtractResource			(UINT resource,LPCSTR lpcszResName,LPCSTR lpszFileName,DWORD* pdwError);
 BOOL			ExtractResourceIntoBuffer(UINT nID,LPCSTR lpcszResName,LPSTR lpBuffer,UINT nSize);
 BOOL			CreateShortcut			(LPCSTR lpcszTarget,LPCSTR lpcszArguments,LPCSTR lpcszLinkFileName,LPCSTR lpcszLinkLocation,LPCSTR lpcszWorkingDir,UINT nIconIndex);
 
@@ -281,6 +281,7 @@ wchar_t*		AnsiToWideChar			(LPCSTR pszAnsi,UINT codePage);
 LPSTR			WideCharToAnsi			(const wchar_t* pwszWide,UINT codePage);
 int				wcscount				(LPCWSTR szString,LPCWSTR szChar);
 wchar_t*		wcsistr					(const wchar_t *haystack,const wchar_t *needle);
+wchar_t*		wcscatn					(wchar_t* buffer,const wchar_t* str,size_t buffer_size);
 
 /*
 	ANSWER

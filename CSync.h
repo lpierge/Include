@@ -103,9 +103,16 @@
 #include "CNodeList.h"
 #include "CWindowsVersion.h"
 
+/*
+NO!
+e' un Heisenbug (dal principio di indeterminazione di Heisenberg): un bug che si manifesta, scompare o altera
+il suo comportamento proprio a causa del meccanismo che si sta usando per osservarlo o per fargli il debug.
+*/
+/*
 #ifdef _DEBUG
   #define _CSYNC_VERBOSE 1
 #endif
+*/
 
 #define SYNC_MS_PER_SEC				1000					// ms contenuti in un secondo
 #define SYNC_MS_TIMEOUT_INCREMENT	10						// ms per incremento sul calcolo del timeout
